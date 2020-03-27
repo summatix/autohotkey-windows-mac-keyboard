@@ -52,7 +52,7 @@ F19::Run https://facebook.com
 ; --------------------------------------------------------------
 
 ; Make Ctrl + S work with cmd (windows) key
-#s::^s
+#s::Send, ^s
 
 ; Selecting
 #a::Send, ^a
@@ -73,25 +73,39 @@ F19::Run https://facebook.com
 #f::Send ^f
 
 ; Undo
-#z::^z
+#z::Send, ^z
 
 ; Redo
-#y::^y
+#y::Send, ^y
 
 ; New tab
 #t::^t
 
 ; close tab
-#w::^w
+#w::Send, ^{F4}
+
+; New window
+#n::Send, ^n
 
 ; Close windows (cmd + q to Alt + F4)
 #q::Send !{F4}
 
 ; Remap Windows + Tab to Alt + Tab.
 Lwin & Tab::AltTab
+Lwin & Shift::ShiftAltTab
 
-; minimize windows
+; Minimize windows
 #m::WinMinimize,a
+
+; Zoom in
+LWin & +::Send ^{NumpadAdd}
+RWin & +::Send ^{NumpadAdd}
+
+; Zoom out
+#-::Send, ^-
+
+; Refresh
+#r::Send, ^r
 
 
 ; --------------------------------------------------------------
@@ -174,3 +188,85 @@ Lwin & Tab::AltTab
 
 #IfWinActive
 
+
+; --------------------------------------------------------------
+; OSX spotlight-like behavior
+; --------------------------------------------------------------
+
+LWin::return
+RWin::return
+#Space::LWin
+
+
+; --------------------------------------------------------------
+; CMD+Click -> CTRL+Click
+; --------------------------------------------------------------
+
+LWin & LButton::
+  Send ^{LButton}
+  Return
+
+RWin & LButton::
+  Send ^{LButton}
+  Return
+
+
+; --------------------------------------------------------------
+; Text selection
+; --------------------------------------------------------------
+
+LWin & Left::
+GetKeyState, state, Shift
+If state = D
+    Send +{Home}
+Else Send {Home}
+Return
+
+LWin & Right::
+GetKeyState, state, Shift
+If state = D
+    Send +{End}
+Else Send {End}
+Return
+
+RWin & Left::
+GetKeyState, state, Shift
+If state = D
+    Send +{Home}
+Else Send {Home}
+Return
+
+RWin & Right::
+GetKeyState, state, Shift
+If state = D
+    Send +{End}
+Else Send {End}
+Return
+
+LAlt & Right::
+GetKeyState, state, Shift
+If state = D
+    Send ^+{Right}
+Else Send ^{Right}
+Return
+
+LAlt & Left::
+GetKeyState, state, Shift
+If state = D
+    Send ^+{Left}
+Else Send ^{Left}
+Return
+
+RAlt & Right::
+GetKeyState, state, Shift
+If state = D
+    Send ^+{Right}
+Else Send ^{Right}
+Return
+
+RAlt & Left::
+GetKeyState, state, Shift
+If state = D
+    Send ^+{Left}
+Else Send ^{Left}
+Return
