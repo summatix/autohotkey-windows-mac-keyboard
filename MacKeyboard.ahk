@@ -191,6 +191,19 @@ RWin & +::Send ^{NumpadAdd}
 
 #IfWinActive
 
+; File explorer
+#IfWinActive ahk_class CabinetWClass
+
+#w::Send !{F4}
+
+#IfWinActive
+
+; Calculator
+#IfWinActive Calculator
+
+#w::Send !{F4}
+
+#IfWinActive
 
 ; --------------------------------------------------------------
 ; OSX spotlight-like behavior
