@@ -205,6 +205,14 @@ RWin & +::Send ^{NumpadAdd}
 
 #IfWinActive
 
+; Firefox
+#IfWinActive, ahk_class MozillaWindowClass
+
+#u::Send ^u
+
+#IfWinActive
+
+
 ; --------------------------------------------------------------
 ; OSX spotlight-like behavior
 ; --------------------------------------------------------------
