@@ -107,6 +107,9 @@ RWin & +::Send ^{NumpadAdd}
 ; Refresh
 #r::Send, ^r
 
+; Clear output
+#k::Send, ^l
+
 
 ; --------------------------------------------------------------
 ; OS X keyboard mappings for special chars
